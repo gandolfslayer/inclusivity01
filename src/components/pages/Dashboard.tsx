@@ -1,5 +1,5 @@
 import React from 'react';
-import { TrendingUp, Users, Mail, Target, ArrowUpRight, ArrowDownRight } from 'lucide-react';
+import { TrendingUp, Users, Mail, Target, ArrowUpRight, ArrowDownRight, Calendar, Eye, Heart, MessageCircle } from 'lucide-react';
 import MetricCard from '../ui/MetricCard';
 import ChartContainer from '../ui/ChartContainer';
 
@@ -11,7 +11,7 @@ const Dashboard: React.FC = () => {
       change: '+12.5%',
       trend: 'up' as const,
       icon: Users,
-      color: 'blue'
+      color: 'purple'
     },
     {
       title: 'Email Open Rate',
@@ -19,7 +19,7 @@ const Dashboard: React.FC = () => {
       change: '+3.2%',
       trend: 'up' as const,
       icon: Mail,
-      color: 'green'
+      color: 'blue'
     },
     {
       title: 'Conversion Rate',
@@ -27,7 +27,7 @@ const Dashboard: React.FC = () => {
       change: '-1.1%',
       trend: 'down' as const,
       icon: Target,
-      color: 'orange'
+      color: 'pink'
     },
     {
       title: 'Revenue',
@@ -35,7 +35,7 @@ const Dashboard: React.FC = () => {
       change: '+18.3%',
       trend: 'up' as const,
       icon: TrendingUp,
-      color: 'purple'
+      color: 'green'
     }
   ];
 
@@ -53,11 +53,17 @@ const Dashboard: React.FC = () => {
     { name: 'Innovation Labs', score: 76, stage: 'Contacted', value: '$6,700' }
   ];
 
+  const recentPosts = [
+    { platform: 'Instagram', content: 'Check out our latest product features! 🚀', engagement: 324, time: '2h ago', status: 'Published' },
+    { platform: 'Twitter', content: 'Marketing tip: Personalization increases email...', engagement: 156, time: '4h ago', status: 'Published' },
+    { platform: 'LinkedIn', content: 'Thought leadership: The future of B2B marketing...', engagement: 89, time: '6h ago', status: 'Scheduled' },
+    { platform: 'Facebook', content: 'Customer success story: How Company X increased...', engagement: 234, time: '8h ago', status: 'Published' }
+  ];
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Marketing Dashboard</h1>
-        <p className="text-gray-600 mt-1">Welcome back! Here's what's happening with your marketing campaigns.</p>
+        <h1 className="text-2xl font-bold text-white">Good morning, Sarah! 👋</h1>
+        <p className="text-gray-400 mt-1">Here's what's happening with your marketing campaigns today.</p>
       </div>
 
       {/* Metrics Grid */}
@@ -67,6 +73,28 @@ const Dashboard: React.FC = () => {
         ))}
       </div>
 
+      {/* Quick Actions */}
+      <div className="bg-[#111111] rounded-2xl p-6 border border-gray-800">
+        <h3 className="text-lg font-semibold text-white mb-4">Quick Actions</h3>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <button className="bg-gradient-to-r from-purple-500 to-pink-500 text-white p-4 rounded-xl hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-200">
+            <Calendar className="h-6 w-6 mb-2" />
+            <div className="text-sm font-medium">Schedule Post</div>
+          </button>
+          <button className="bg-[#1a1a1a] border border-gray-700 text-white p-4 rounded-xl hover:border-gray-600 transition-all duration-200">
+            <Users className="h-6 w-6 mb-2" />
+            <div className="text-sm font-medium">Add Lead</div>
+          </button>
+          <button className="bg-[#1a1a1a] border border-gray-700 text-white p-4 rounded-xl hover:border-gray-600 transition-all duration-200">
+            <Mail className="h-6 w-6 mb-2" />
+            <div className="text-sm font-medium">Create Campaign</div>
+          </button>
+          <button className="bg-[#1a1a1a] border border-gray-700 text-white p-4 rounded-xl hover:border-gray-600 transition-all duration-200">
+            <TrendingUp className="h-6 w-6 mb-2" />
+            <div className="text-sm font-medium">View Analytics</div>
+          </button>
+        </div>
+      </div>
       {/* Charts Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <ChartContainer 
@@ -80,19 +108,19 @@ const Dashboard: React.FC = () => {
           ]}
         />
         
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+        <div className="bg-[#111111] p-6 rounded-2xl border border-gray-800">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-semibold text-gray-900">Lead Sources</h3>
-            <button className="text-blue-600 hover:text-blue-700 text-sm font-medium">View All</button>
+            <h3 className="text-lg font-semibold text-white">Lead Sources</h3>
+            <button className="text-purple-400 hover:text-purple-300 text-sm font-medium">View All</button>
           </div>
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
-                <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                <span className="text-gray-700">Organic Search</span>
+                <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
+                <span className="text-gray-300">Organic Search</span>
               </div>
               <div className="text-right">
-                <div className="font-semibold text-gray-900">45.2%</div>
+                <div className="font-semibold text-white">45.2%</div>
                 <div className="text-xs text-green-600 flex items-center">
                   <ArrowUpRight className="h-3 w-3 mr-1" />
                   +2.3%
@@ -102,11 +130,11 @@ const Dashboard: React.FC = () => {
             
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
-                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                <span className="text-gray-700">Social Media</span>
+                <div className="w-3 h-3 bg-pink-500 rounded-full"></div>
+                <span className="text-gray-300">Social Media</span>
               </div>
               <div className="text-right">
-                <div className="font-semibold text-gray-900">28.7%</div>
+                <div className="font-semibold text-white">28.7%</div>
                 <div className="text-xs text-green-600 flex items-center">
                   <ArrowUpRight className="h-3 w-3 mr-1" />
                   +5.1%
@@ -116,11 +144,11 @@ const Dashboard: React.FC = () => {
             
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
-                <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
-                <span className="text-gray-700">Email Marketing</span>
+                <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                <span className="text-gray-300">Email Marketing</span>
               </div>
               <div className="text-right">
-                <div className="font-semibold text-gray-900">18.9%</div>
+                <div className="font-semibold text-white">18.9%</div>
                 <div className="text-xs text-red-600 flex items-center">
                   <ArrowDownRight className="h-3 w-3 mr-1" />
                   -1.2%
@@ -130,11 +158,11 @@ const Dashboard: React.FC = () => {
             
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
-                <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
-                <span className="text-gray-700">Paid Ads</span>
+                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                <span className="text-gray-300">Paid Ads</span>
               </div>
               <div className="text-right">
-                <div className="font-semibold text-gray-900">7.2%</div>
+                <div className="font-semibold text-white">7.2%</div>
                 <div className="text-xs text-green-600 flex items-center">
                   <ArrowUpRight className="h-3 w-3 mr-1" />
                   +0.8%
@@ -148,40 +176,40 @@ const Dashboard: React.FC = () => {
       {/* Tables Section */}
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
         {/* Recent Campaigns */}
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200">
-          <div className="p-6 border-b border-gray-200">
+        <div className="bg-[#111111] rounded-2xl border border-gray-800">
+          <div className="p-6 border-b border-gray-800">
             <div className="flex items-center justify-between">
-              <h3 className="text-lg font-semibold text-gray-900">Recent Campaigns</h3>
-              <button className="text-blue-600 hover:text-blue-700 text-sm font-medium">View All</button>
+              <h3 className="text-lg font-semibold text-white">Recent Campaigns</h3>
+              <button className="text-purple-400 hover:text-purple-300 text-sm font-medium">View All</button>
             </div>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-gray-50">
+              <thead className="bg-[#1a1a1a]">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Campaign</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Opens</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">CVR</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Campaign</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Status</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Opens</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">CVR</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-200">
+              <tbody className="divide-y divide-gray-800">
                 {recentCampaigns.map((campaign) => (
-                  <tr key={campaign.name} className="hover:bg-gray-50">
+                  <tr key={campaign.name} className="hover:bg-[#1a1a1a]">
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="font-medium text-gray-900">{campaign.name}</div>
+                      <div className="font-medium text-white">{campaign.name}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${
                         campaign.status === 'Active' 
-                          ? 'bg-green-100 text-green-800' 
-                          : 'bg-gray-100 text-gray-800'
+                          ? 'bg-green-500/20 text-green-400' 
+                          : 'bg-gray-500/20 text-gray-400'
                       }`}>
                         {campaign.status}
                       </span>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-gray-900">{campaign.opens.toLocaleString()}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-gray-900">{campaign.conversion}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-gray-300">{campaign.opens.toLocaleString()}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-gray-300">{campaign.conversion}</td>
                   </tr>
                 ))}
               </tbody>
@@ -189,34 +217,39 @@ const Dashboard: React.FC = () => {
           </div>
         </div>
 
-        {/* Top Leads */}
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200">
-          <div className="p-6 border-b border-gray-200">
+        {/* Recent Social Posts */}
+        <div className="bg-[#111111] rounded-2xl border border-gray-800">
+          <div className="p-6 border-b border-gray-800">
             <div className="flex items-center justify-between">
-              <h3 className="text-lg font-semibold text-gray-900">Top Qualified Leads</h3>
-              <button className="text-blue-600 hover:text-blue-700 text-sm font-medium">View All</button>
+              <h3 className="text-lg font-semibold text-white">Recent Social Posts</h3>
+              <button className="text-purple-400 hover:text-purple-300 text-sm font-medium">View All</button>
             </div>
           </div>
           <div className="p-6">
             <div className="space-y-4">
-              {topLeads.map((lead) => (
-                <div key={lead.name} className="flex items-center justify-between p-4 rounded-lg border border-gray-200 hover:border-blue-200 transition-colors">
+              {recentPosts.map((post, index) => (
+                <div key={index} className="flex items-center justify-between p-4 rounded-xl bg-[#1a1a1a] border border-gray-700 hover:border-gray-600 transition-colors">
                   <div className="flex items-center space-x-3">
                     <div className="flex-shrink-0">
-                      <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                        <div className="w-6 h-6 bg-blue-600 rounded text-white text-xs font-bold flex items-center justify-center">
-                          {lead.name.charAt(0)}
+                      <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                        <div className="text-white text-xs font-bold">
+                          {post.platform.charAt(0)}
                         </div>
                       </div>
                     </div>
                     <div>
-                      <div className="font-medium text-gray-900">{lead.name}</div>
-                      <div className="text-sm text-gray-500">{lead.stage}</div>
+                      <div className="font-medium text-white text-sm">{post.content}</div>
+                      <div className="text-xs text-gray-400">{post.platform} • {post.time}</div>
                     </div>
                   </div>
                   <div className="text-right">
-                    <div className="font-semibold text-gray-900">{lead.value}</div>
-                    <div className="text-sm text-gray-500">Score: {lead.score}</div>
+                    <div className="flex items-center space-x-1 text-gray-400">
+                      <Heart className="h-3 w-3" />
+                      <span className="text-xs">{post.engagement}</span>
+                    </div>
+                    <div className={`text-xs ${post.status === 'Published' ? 'text-green-400' : 'text-yellow-400'}`}>
+                      {post.status}
+                    </div>
                   </div>
                 </div>
               ))}

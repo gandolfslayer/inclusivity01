@@ -35,7 +35,7 @@ function App() {
   };
 
   return (
-    <div className="flex h-screen bg-gray-50">
+    <div className="flex h-screen bg-[#0a0a0a]">
       <Sidebar 
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
@@ -47,7 +47,7 @@ function App() {
           collapsed={sidebarCollapsed}
           setCollapsed={setSidebarCollapsed}
         />
-        <main className="flex-1 overflow-y-auto p-6">
+        <main className="flex-1 overflow-y-auto p-6 bg-[#0a0a0a]">
           {renderPage()}
         </main>
       </div>
